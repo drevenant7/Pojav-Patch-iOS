@@ -1,6 +1,3 @@
-ifeq ($(shell test -d /var/jb && echo 1),1)
-SHELL := /var/jb/bin/bash
-else
 SHELL := /bin/bash
 endif
 .SHELLFLAGS = -ec
@@ -59,10 +56,6 @@ BOOTJDK     ?= $(shell /usr/libexec/java_home -v 1.8)/bin
 $(warning Building on macOS.)
 else
 IOS         := 1
-ifeq ($(shell test -d /var/jb && echo 1),1)
-SDKPATH     ?= /var/jb/usr/share/SDKs/iPhoneOS.sdk
-BOOTJDK     ?= /var/jb/usr/lib/jvm/java-8-openjdk/bin
-else
 SDKPATH     ?= /usr/share/SDKs/iPhoneOS.sdk
 BOOTJDK     ?= /usr/lib/jvm/java-8-openjdk/bin
 endif
